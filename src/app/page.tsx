@@ -24,7 +24,7 @@ export default function Index() {
 		else {
 			setIsImageUploaded(false)
 		}
-  };
+	};
 
 	const handleDirectionChange = (button: String) => {
 		setDirection(button);
@@ -39,12 +39,12 @@ export default function Index() {
 	}
 
 	const handleHorizontalSliderChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setHorizontalSliderValue(Number(event.target.value));
-  };
+		setHorizontalSliderValue(Number(event.target.value));
+	};
 
 	const handleVerticalSliderChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setVerticalSliderValue(Number(event.target.value));
-  };
+		setVerticalSliderValue(Number(event.target.value));
+	};
 
 	const getDragDirection = () => {
 		if (direction === "vertical") {
@@ -68,108 +68,108 @@ export default function Index() {
 	}
 
 	const handleRunClick = async () => {
-    try {
-      const response = await fetch('/api', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
+		try {
+			const response = await fetch('/api', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({
 					image,
-          direction,
-          dragDirection: getDragDirection(),
-          dragPosition: getSliderValue(),
-        }),
-      });
-      const data = await response.json();
-      setProcessedImage(data.processed_image);
-    } catch (error) {
-      console.error('Error:', error);
-      alert('An error occurred');
-    }
-  };
+					direction,
+					dragDirection: getDragDirection(),
+					dragPosition: getSliderValue(),
+				}),
+			});
+			const data = await response.json();
+			setProcessedImage(data.processed_image);
+		} catch (error) {
+			console.error('Error:', error);
+			alert('An error occurred');
+		}
+	};
 
 
-  return (
-    <div className={styles.page}>
-      <div className="wrapper">
-        <div className="container">
-          <div id="welcome">
-            <h1>
-              <span> Hello there, welcome to Pixel Drag</span>
-            </h1>
-          </div>
+	return (
+		<div className={styles.page}>
+			<div className="wrapper">
+				<div className="container">
+					<div id="welcome">
+						<h1>
+							<span> Hello there, welcome to Pixel Drag</span>
+						</h1>
+					</div>
 					<div id="commands" className="rounded shadow">
-						<ImageUploader onImageUpload={handleImageUpload} direction={direction} dragDirection={getDragDirection()} dragPosition={getSliderValue()}/>
+						<ImageUploader onImageUpload={handleImageUpload} direction={direction} dragDirection={getDragDirection()} dragPosition={getSliderValue()} />
 						{isImageUploaded && (
 							<>
-							<h1>Line Direction</h1>
-						<div id="row">
-							<button className={direction === "horizontal" ? "selected" : "unselected"} onClick={() => handleDirectionChange('horizontal')}>
-								horizontal
-							</button>
-							<button className={direction === "vertical" ? "selected" : "unselected"} onClick={() => handleDirectionChange('vertical')}>
-								vertical
-							</button>
-							<button className={direction === "y=x" ? "selected" : "unselected"} onClick={() => handleDirectionChange('y=x')}>
-								on y=x
-							</button>
-						</div>
-						{(direction === "vertical" || direction === "horizontal") && <h1>Drag Direction</h1>}
-						{direction === "horizontal" && <div id="row">
-						<button className={horizontalDirection === "up" ? "selected" : "unselected"} onClick={() => handleHorizontalDirectionChange('up')}>
-								up
-							</button>
-							<button className={horizontalDirection === "down" ? "selected" : "unselected"} onClick={() => handleHorizontalDirectionChange('down')}>
-								down
-							</button>
-						</div>}
-						{direction === "vertical" && <div id="row">
-						<button className={verticalDirection === "left" ? "selected" : "unselected"} onClick={() => handleVerticalDirectionChange('left')}>
-								left
-							</button>
-							<button className={verticalDirection === "right" ? "selected" : "unselected"} onClick={() => handleVerticalDirectionChange('right')}>
-								right
-							</button>
-						</div>}
-						{(direction === "vertical" || direction === "horizontal") && <h1>Drag Position</h1>}
-						{direction === "horizontal" && <div id="slider">
-							<div>higher</div>
-							<input
-								type="range"
-								min="20"
-								max="80"
-								value={horizontalSliderValue}
-								onChange={handleHorizontalSliderChange}
-							/>
-								<div>lower</div>
-      			</div>}
-						{direction === "vertical" && <div id="slider">
-							<div>more left</div>
-							<input
-								type="range"
-								min="20"
-								max="80"
-								value={verticalSliderValue}
-								onChange={handleVerticalSliderChange}
-							/>
-								<div>more right</div>
-      			</div>}
-						{direction && <div id="row">
-							<button className="unselected" onClick={handleRunClick}>Run</button>
-						</div>}
+								<h1>Line Direction</h1>
+								<div id="row">
+									<button className={direction === "horizontal" ? "selected" : "unselected"} onClick={() => handleDirectionChange('horizontal')}>
+										horizontal
+									</button>
+									<button className={direction === "vertical" ? "selected" : "unselected"} onClick={() => handleDirectionChange('vertical')}>
+										vertical
+									</button>
+									<button className={direction === "y=x" ? "selected" : "unselected"} onClick={() => handleDirectionChange('y=x')}>
+										on y=x
+									</button>
+								</div>
+								{(direction === "vertical" || direction === "horizontal") && <h1>Drag Direction</h1>}
+								{direction === "horizontal" && <div id="row">
+									<button className={horizontalDirection === "up" ? "selected" : "unselected"} onClick={() => handleHorizontalDirectionChange('up')}>
+										up
+									</button>
+									<button className={horizontalDirection === "down" ? "selected" : "unselected"} onClick={() => handleHorizontalDirectionChange('down')}>
+										down
+									</button>
+								</div>}
+								{direction === "vertical" && <div id="row">
+									<button className={verticalDirection === "left" ? "selected" : "unselected"} onClick={() => handleVerticalDirectionChange('left')}>
+										left
+									</button>
+									<button className={verticalDirection === "right" ? "selected" : "unselected"} onClick={() => handleVerticalDirectionChange('right')}>
+										right
+									</button>
+								</div>}
+								{(direction === "vertical" || direction === "horizontal") && <h1>Drag Position</h1>}
+								{direction === "horizontal" && <div id="slider">
+									<div>higher</div>
+									<input
+										type="range"
+										min="20"
+										max="80"
+										value={horizontalSliderValue}
+										onChange={handleHorizontalSliderChange}
+									/>
+									<div>lower</div>
+								</div>}
+								{direction === "vertical" && <div id="slider">
+									<div>more left</div>
+									<input
+										type="range"
+										min="20"
+										max="80"
+										value={verticalSliderValue}
+										onChange={handleVerticalSliderChange}
+									/>
+									<div>more right</div>
+								</div>}
+								{direction && <div id="row">
+									<button className="unselected" onClick={handleRunClick}>Run</button>
+								</div>}
 							</>
 						)
 						}
 						{processedImage && (
-                  <div>
-                    <h2>Processed Image</h2>
-                    <DownloadButton image={processedImage} />
-                  </div>
-                )}
+							<div>
+								<h2>Processed Image</h2>
+								<DownloadButton image={processedImage} />
+							</div>
+						)}
 					</div>
-        </div>
-      </div>
-    </div>
-  );
+				</div>
+			</div>
+		</div>
+	);
 }

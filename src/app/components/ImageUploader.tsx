@@ -4,9 +4,9 @@ import React, { useState, ChangeEvent, useEffect } from 'react';
 import styles from './ImageUploader.module.css';
 
 interface ImageUploaderProps {
-	onImageUpload: (image: String | null) => void;
-	direction: String;
-	dragDirection?: String;
+	onImageUpload: (image: string | null) => void;
+	direction: string;
+	dragDirection?: string;
 	dragPosition?: number;
 }
 

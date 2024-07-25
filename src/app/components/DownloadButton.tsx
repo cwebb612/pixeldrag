@@ -1,7 +1,11 @@
 import React from 'react';
 import styles from './DownloadButton.module.css';
 
-const DownloadButton = ({ image }) => {
+interface DownloadButtonProps {
+    image: string
+}
+
+const DownloadButton: React.FC<DownloadButtonProps> = ({ image }) => {
     const handleDownload = () => {
         const link = document.createElement('a');
         link.href = image;

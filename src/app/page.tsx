@@ -7,16 +7,16 @@ import DownloadButton from './components/DownloadButton';
 
 
 export default function Index() {
-	const [image, setImage] = useState<String>('');
+	const [image, setImage] = useState<string>('');
 	const [isImageUploaded, setIsImageUploaded] = useState<boolean>(false);
-	const [direction, setDirection] = useState<String>('');
-	const [horizontalDirection, setHorizontalDirection] = useState<String>('');
-	const [verticalDirection, setVerticalDirection] = useState<String>('');
+	const [direction, setDirection] = useState<string>('');
+	const [horizontalDirection, setHorizontalDirection] = useState<string>('');
+	const [verticalDirection, setVerticalDirection] = useState<string>('');
 	const [horizontalSliderValue, setHorizontalSliderValue] = useState(50);
 	const [verticalSliderValue, setVerticalSliderValue] = useState(50);
 	const [processedImage, setProcessedImage] = useState('');
 
-	const handleImageUpload = (image: String | null) => {
+	const handleImageUpload = (image: string | null) => {
 		if (image) {
 			setImage(image)
 			setIsImageUploaded(true)
@@ -26,15 +26,15 @@ export default function Index() {
 		}
 	};
 
-	const handleDirectionChange = (button: String) => {
+	const handleDirectionChange = (button: string) => {
 		setDirection(button);
 	};
 
-	const handleHorizontalDirectionChange = (button: String) => {
+	const handleHorizontalDirectionChange = (button: string) => {
 		setHorizontalDirection(button)
 	}
 
-	const handleVerticalDirectionChange = (button: String) => {
+	const handleVerticalDirectionChange = (button: string) => {
 		setVerticalDirection(button)
 	}
 
